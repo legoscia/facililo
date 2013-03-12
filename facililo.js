@@ -1,10 +1,33 @@
+function enarbigu(arbero, vortero, tipo) {
+    if (!arbero) arbero = [];
+    if (vortero.length == 0) {
+        arbero['ekzistas'] = tipo;
+        return arbero;
+    }
+    else {
+        var litero = vortero[0];
+        arbero[litero] = enarbigu(arbero[litero], vortero.slice(1), tipo);
+        return arbero;
+    }
+}
+        
+var arbo = [];
+for (var i = 0; i < Object.keys(vortaroTreFacilaj).length; i++) {
+    var vorto = Object.keys(vortaroTreFacilaj)[i];
+    var tipo = vortaroTreFacilaj[vorto];
+    if (tipo == 1) {
+        // por vortoj kun vortklasa finaĵo, konservu nur radikon
+        vorto = vorto.slice(0, vorto.length - 1);
+    }
+    arbo = enarbigu(arbo, vorto, tipo);
+}
+
 var FaciliĝuModelo = function() {
     this.teksto = ko.observable('');
     this.kontrolorezulto = ko.observable({vortoj: 0, treFacilaj: 0, facilaj: [], malfacilaj: []});
 
     var kunMalfruo = ko.computed(this.teksto).extend({ throttle: 500 });
     kunMalfruo.subscribe(function(laTeksto) {
-        console.log("Kontrolas na " + laTeksto);
         this.kontrolorezulto(kontrolu(laTeksto));
     }, this);
 }
@@ -15,13 +38,12 @@ function kontrolu(teksto) {
     var vortoj = teksto.match(vortoRe);
 
     if (!vortoj) {
-        return "Nenio estas tajpita.";
+        return {vortoj: 0, treFacilaj: 0, facilaj: [], malfacilaj: []};
     }
 
     console.log("Trovis vortojn: " + vortoj.toString());
 
     var malfacilaj = [], neTreFacilaj = [], treFacilaj = 0;
-    console.log("vortoj: "+typeof vortoj);
 
     for (var i = 0; i < vortoj.length; i++) {
         var vorto = vortoj[i];
@@ -67,53 +89,67 @@ function senSufiksoj(vorto, sufiksoj) {
 
 // 0 = tre facila vorto, 1 = facila vorto, 2 = malfacila vorto
 function kontroliVorton(vorto) {
-    // Ĉu ĝi estas verbo ne-infinitiva?
+    // Ĉu ĝi estas verbo?
     var verbradiko;
-    if (verbradiko = senSufiksoj(vorto, ["as", "is", "os", "us", "u"])) {
-        var infinitiva = verbradiko + "i";
-        var rezulto = ĉuEnestas(infinitiva);
+    if (verbradiko = senSufiksoj(vorto, ["i", "as", "is", "os", "us", "u"])) {
+        var rezulto = ĉuEnestas(verbradiko, false);
         if (rezulto < 2) {
             return rezulto;
         }
     }
 
-    // Ĉu ĝi estas substantivo ne-nominativa / ne-ununombra?
+    // Ĉu ĝi estas substantivo?
     var substantivradiko;
-    if (substantivradiko = senSufiksoj(vorto, ["on", "oj", "ojn"])) {
-        var nominativununombra = substantivradiko + "o";
-        var rezulto = ĉuEnestas(nominativununombra);
+    if (substantivradiko = senSufiksoj(vorto, ["o", "on", "oj", "ojn"])) {
+        var rezulto = ĉuEnestas(substantivradiko, false);
         if (rezulto < 2) {
             return rezulto;
         }
     }
 
-    // Ĉu ĝi estas adjektivo ne-nominativa / ne-ununombra?
+    // Ĉu ĝi estas adjektivo?
     var adjektivradiko;
-    if (adjektivradiko = senSufiksoj(vorto, ["an", "aj", "ajn"])) {
-        var nominativununombra = adjektivradiko + "a";
-        var rezulto = ĉuEnestas(nominativununombra);
+    if (adjektivradiko = senSufiksoj(vorto, ["a", "an", "aj", "ajn"])) {
+        var rezulto = ĉuEnestas(adjektivradiko, false);
         if (rezulto < 2) {
             return rezulto;
         }
     }
 
-    // Ĉu ĝi estas adverbo kun akuzativa finaĵo?
+    // Ĉu ĝi estas adverbo?
     var adverbradiko;
-    if (adverbradiko = senSufikso(vorto, "en")) {
-        var senakuzativa = adverbradiko + "e";
-        var rezulto = ĉuEnestas(senakuzativa);
+    if (adverbradiko = senSufiksoj(vorto, ["e", "en"])) {
+        var rezulto = ĉuEnestas(adverbradiko, false);
         if (rezulto < 2) {
             return rezulto;
         }
     }
 
-    return ĉuEnestas(vorto);
+    return ĉuEnestas(vorto, true);
 }
 
-function ĉuEnestas(vorto) {
-    if (vortaroTreFacilaj.indexOf(vorto) != -1) {
-        return 0;
-    } else if (vortaroFacilaj.indexOf(vorto) != -1) {
+function ĉuEnestas(vorto, devasEstiSenfinaĵa) {
+    var arbero = arbo;
+    for (var i = 0; i < vorto.length; i++) {
+        if (arbero[vorto[i]]) {
+            arbero = arbero[vorto[i]];
+            if (arbero['ekzistas']) {
+                if (i + 1 < vorto.length) {
+		    // XXX: skribtablo vs skribotablo
+                    if (ĉuEnestas(vorto.slice(i + 1), devasEstiSenfinaĵa) == 0) {
+                        return 0;
+                    }
+                }
+                else if (arbero['ekzistas'] == 2 || !devasEstiSenfinaĵa) {
+                    return 0;
+                }
+            }
+        }
+        else
+            break;
+    }
+
+    if (vortaroFacilaj.indexOf(vorto) != -1) {
         return 1;
     } else {
         return 2;
