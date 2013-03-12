@@ -1,3 +1,4 @@
+// Kopiita el http://remush.be/tezauro/Kontakto.html
 var vortaroFacilaj = ["aboni",
   "afabla",
   "agrabla",

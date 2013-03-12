@@ -1,3 +1,4 @@
+// Kopiita el http://remush.be/tezauro/Kontakto.html
 var vortaroTreFacilaj = { /* "-a", */
   /* "-aĉ", */
   "aĉeti": 1,
