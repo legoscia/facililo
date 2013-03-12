@@ -3,7 +3,6 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <title>Verku facilajn tekstojn en Esperanto</title>
-<head>
 
 <script type='text/javascript' src='knockout-2.2.1.js'></script>
 <script type='text/javascript' src='trefacilaj.js'></script>
@@ -21,7 +20,7 @@ kaj
 <textarea
   data-bind="value: teksto, valueUpdate: 'afterkeydown'"
   placeholder="Tajpu facilan tekston!"
-  rows="20" cols="65"></textarea>
+  rows="15" cols="65"></textarea>
 </div>
 
 <div data-bind="with: kontrolorezulto">
@@ -33,13 +32,13 @@ kaj
     <div data-bind="if: facilaj.length &gt; 0">
       La jenaj vortoj estas "facilaj", sed ne "tre facilaj":
       <ul data-bind="foreach: facilaj">
-        <li data-bind="text: $data"
+        <li data-bind="text: $data">
       </ul>
     </div>
     <div data-bind="if: malfacilaj.length &gt; 0">
       La jenaj vortoj estas nek "facilaj" nek "tre facilaj":
       <ul data-bind="foreach: malfacilaj">
-        <li data-bind="text: $data"
+        <li data-bind="text: $data">
       </ul>
     </div>
   </div>
