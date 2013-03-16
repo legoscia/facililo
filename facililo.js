@@ -113,7 +113,7 @@ function kontroliVorton(vorto) {
     // Ĉu ĝi estas verbo?
     var verbradiko;
     if (verbradiko = senSufiksoj(vorto, ["i", "as", "is", "os", "us", "u"])) {
-        var rezulto = ĉuEnestas(verbradiko, false);
+        var rezulto = ĉuEnestas(arbo, verbradiko, false);
         if (rezulto < 2) {
             return rezulto;
         }
@@ -122,7 +122,7 @@ function kontroliVorton(vorto) {
     // Ĉu ĝi estas substantivo?
     var substantivradiko;
     if (substantivradiko = senSufiksoj(vorto, ["o", "on", "oj", "ojn"])) {
-        var rezulto = ĉuEnestas(substantivradiko, false);
+        var rezulto = ĉuEnestas(arbo, substantivradiko, false);
         if (rezulto < 2) {
             return rezulto;
         }
@@ -131,7 +131,7 @@ function kontroliVorton(vorto) {
     // Ĉu ĝi estas adjektivo?
     var adjektivradiko;
     if (adjektivradiko = senSufiksoj(vorto, ["a", "an", "aj", "ajn"])) {
-        var rezulto = ĉuEnestas(adjektivradiko, false);
+        var rezulto = ĉuEnestas(arbo, adjektivradiko, false);
         if (rezulto < 2) {
             return rezulto;
         }
@@ -140,17 +140,16 @@ function kontroliVorton(vorto) {
     // Ĉu ĝi estas adverbo?
     var adverbradiko;
     if (adverbradiko = senSufiksoj(vorto, ["e", "en"])) {
-        var rezulto = ĉuEnestas(adverbradiko, false);
+        var rezulto = ĉuEnestas(arbo, adverbradiko, false);
         if (rezulto < 2) {
             return rezulto;
         }
     }
 
-    return ĉuEnestas(vorto, true);
+    return ĉuEnestas(arbo, vorto, true);
 }
 
-function ĉuEnestas(vorto, devasEstiSenfinaĵa) {
-    var arbero = arbo;
+function ĉuEnestas(arbero, vorto, devasEstiSenfinaĵa) {
     for (var i = 0; i < vorto.length; i++) {
         if (arbero[vorto[i]]) {
             arbero = arbero[vorto[i]];
