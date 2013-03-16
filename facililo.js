@@ -19,15 +19,15 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-function enarbigu(arbero, vortero, tipo) {
+function enarbigu(arbero, vortero, tipo, nivelo) {
     if (!arbero) arbero = [];
     if (vortero.length == 0) {
-        arbero['ekzistas'] = tipo;
+        arbero['ekzistas'] = {tipo: tipo, nivelo: nivelo};
         return arbero;
     }
     else {
         var litero = vortero[0];
-        arbero[litero] = enarbigu(arbero[litero], vortero.slice(1), tipo);
+        arbero[litero] = enarbigu(arbero[litero], vortero.slice(1), tipo, nivelo);
         return arbero;
     }
 }
@@ -39,13 +39,21 @@ for (var vorto in vortaroTreFacilaj) {
         // por vortoj kun vortklasa finaĵo, konservu nur radikon
         vorto = vorto.slice(0, vorto.length - 1);
     }
-    arbo = enarbigu(arbo, vorto, tipo);
+    arbo = enarbigu(arbo, vorto, tipo, 0);
 }
 for (var i in prefiksojTreFacilaj) {
-    arbo = enarbigu(arbo, prefiksojTreFacilaj[i], 1);
+    arbo = enarbigu(arbo, prefiksojTreFacilaj[i], 1, 0);
 }
 for (var i in sufiksojTreFacilaj) {
-    arbo = enarbigu(arbo, sufiksojTreFacilaj[i], 1);
+    arbo = enarbigu(arbo, sufiksojTreFacilaj[i], 1, 0);
+}
+for (var vorto in vortaroFacilaj) {
+    var tipo = vortaroFacilaj[vorto];
+    if (tipo == 1) {
+        // por vortoj kun vortklasa finaĵo, konservu nur radikon
+        vorto = vorto.slice(0, vorto.length - 1);
+    }
+    arbo = enarbigu(arbo, vorto, tipo, 1);
 }
 
 var FaciliĝuModelo = function() {
@@ -154,13 +162,17 @@ function kontroliVorton(vorto) {
     return ĉuEnestas(arbo, vorto, true);
 }
 
-function trovuVorterojn(arbero, vorto, komenco) {
+function trovuVorterojn(arbero, vorto, komenco, minimumaNivelo) {
     var vorteroj = [];
     for (var i = komenco; i < vorto.length; i++) {
         if (arbero[vorto[i]]) {
             arbero = arbero[vorto[i]];
             if (arbero['ekzistas']) {
-		vorteroj.push({ fino: i, tipo: arbero['ekzistas'], nivelo: 0 });
+		vorteroj.push(
+		    { fino: i,
+		      tipo: arbero['ekzistas'].tipo,
+		      nivelo: Math.max(arbero['ekzistas'].nivelo, minimumaNivelo)
+		    });
             }
         }
         else
@@ -170,7 +182,7 @@ function trovuVorterojn(arbero, vorto, komenco) {
 }
 
 function ĉuEnestas(arbero, vorto, devasEstiVorteto) {
-    var vorteroj = trovuVorterojn(arbero, vorto, 0);
+    var vorteroj = trovuVorterojn(arbero, vorto, 0, 0);
     while (vorteroj.length > 0) {
 	console.log(vorto, vorteroj);
 	var novajVorteroj = [];
@@ -179,20 +191,18 @@ function ĉuEnestas(arbero, vorto, devasEstiVorteto) {
 		if (vorteroj[i].tipo == 2 || !devasEstiVorteto)
 		    return vorteroj[i].nivelo;
 	    // XXX: nivelo je kombinoj
-	    novajVorteroj = novajVorteroj.concat(trovuVorterojn(arbero, vorto, vorteroj[i].fino + 1));
+	    novajVorteroj = novajVorteroj.concat(
+		trovuVorterojn(arbero, vorto, vorteroj[i].fino + 1, vorteroj[i].nivelo));
 	    // skribtablo vs skribotablo: permesu unu el la vokaloj A,
 	    // O, E kaj I inter radikoj.
 	    if ("aoei".indexOf(vorto[vorteroj[i].fino + 1]) != -1)
-		novajVorteroj = novajVorteroj.concat(trovuVorterojn(arbero, vorto, vorteroj[i].fino + 2));
+		novajVorteroj = novajVorteroj.concat(
+		    trovuVorterojn(arbero, vorto, vorteroj[i].fino + 2, vorteroj[i].nivelo));
 	}
 	vorteroj = novajVorteroj;
     }
 
-    if (vortaroFacilaj.indexOf(vorto) != -1) {
-        return 1;
-    } else {
-        return 2;
-    }
+    return 2;
 }
 
 ko.applyBindings(new FaciliĝuModelo());
