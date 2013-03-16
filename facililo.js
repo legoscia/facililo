@@ -56,9 +56,9 @@ for (var vorto in vortaroFacilaj) {
     arbo = enarbigu(arbo, vorto, tipo, 1);
 }
 
-var FaciliĝuModelo = function() {
-    this.teksto = ko.observable('');
-    this.kontrolorezulto = ko.observable({vortoj: 0, treFacilaj: 0, facilaj: [], malfacilaj: []});
+var FaciliĝuModelo = function(komencaTeksto) {
+    this.teksto = ko.observable(komencaTeksto);
+    this.kontrolorezulto = ko.observable(kontrolu(komencaTeksto));
 
     var kunMalfruo = ko.computed(this.teksto).extend({ throttle: 500 });
     kunMalfruo.subscribe(function(laTeksto) {
@@ -205,4 +205,4 @@ function ĉuEnestas(arbero, vorto, devasEstiVorteto) {
     return 2;
 }
 
-ko.applyBindings(new FaciliĝuModelo());
+ko.applyBindings(new FaciliĝuModelo(document.getElementById('tekstujo').value));
