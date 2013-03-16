@@ -149,24 +149,38 @@ function kontroliVorton(vorto) {
     return ĉuEnestas(arbo, vorto, true);
 }
 
-function ĉuEnestas(arbero, vorto, devasEstiVorteto) {
-    for (var i = 0; i < vorto.length; i++) {
+function trovuVorterojn(arbero, vorto, komenco) {
+    var vorteroj = [];
+    for (var i = komenco; i < vorto.length; i++) {
         if (arbero[vorto[i]]) {
             arbero = arbero[vorto[i]];
             if (arbero['ekzistas']) {
-                if (i + 1 < vorto.length) {
-		    // XXX: skribtablo vs skribotablo
-                    if (ĉuEnestas(vorto.slice(i + 1), devasEstiVorteto) == 0) {
-                        return 0;
-                    }
-                }
-                else if (arbero['ekzistas'] == 2 || !devasEstiVorteto) {
-                    return 0;
-                }
+		vorteroj.push({ fino: i, tipo: arbero['ekzistas'], nivelo: 0 });
             }
         }
         else
             break;
+    }
+    return vorteroj;
+}
+
+function ĉuEnestas(arbero, vorto, devasEstiVorteto) {
+    var vorteroj = trovuVorterojn(arbero, vorto, 0);
+    while (vorteroj.length > 0) {
+	console.log(vorto, vorteroj);
+	var novajVorteroj = [];
+	for (var i = 0; i < vorteroj.length; i++) {
+	    if (vorteroj[i].fino == vorto.length - 1)
+		if (vorteroj[i].tipo == 2 || !devasEstiVorteto)
+		    return vorteroj[i].nivelo;
+	    // XXX: nivelo je kombinoj
+	    novajVorteroj = novajVorteroj.concat(trovuVorterojn(arbero, vorto, vorteroj[i].fino + 1));
+	    // skribtablo vs skribotablo: permesu unu el la vokaloj A,
+	    // O, E kaj I inter radikoj.
+	    if ("aoei".indexOf(vorto[vorteroj[i].fino + 1]) != -1)
+		novajVorteroj = novajVorteroj.concat(trovuVorterojn(arbero, vorto, vorteroj[i].fino + 2));
+	}
+	vorteroj = novajVorteroj;
     }
 
     if (vortaroFacilaj.indexOf(vorto) != -1) {
