@@ -30,6 +30,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 <script type='text/javascript' src='trefacilaj.js'></script>
 <script type='text/javascript' src='facilaj.js'></script>
 
+<style>
+#montrujo { margin: 2em; }
+
+.trefacila { background-color: rgb(192, 255, 192); }
+.facila    { background-color: rgb(192, 220, 255); }
+.malfacila { background-color: rgb(255, 192, 192); }
+</style>
+
 </head>
 
 <body>
@@ -48,6 +56,8 @@ kaj
 </div>
 
 <div data-bind="with: kontrolorezulto">
+  <div id="montrujo" data-bind="foreach: teksteroj"><span data-bind="
+      text: tekstero, css: (nivelo == 0) ? 'trefacila' : (nivelo == 1) ? 'facila' : 'malfacila'"></span></div>
   <span data-bind="if: vortoj == 0">Nenio estas tajpita.</span>
   <div data-bind="if: vortoj &gt; 0">
     <span data-bind="if: treFacilaj == 0">Neniuj tre facilaj vortoj.</span>

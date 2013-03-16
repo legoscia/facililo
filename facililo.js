@@ -68,33 +68,34 @@ var FaciliĝuModelo = function(komencaTeksto) {
 
 function kontrolu(teksto) {
     var vortoRe = /[a-zĉĝĥĵŝŭ]+/gi;
+    var rezulto;
 
-    var vortoj = teksto.match(vortoRe);
+    var teksteroj = [], malfacilaj = [], neTreFacilaj = [], treFacilaj = 0;
+    var ek = 0;
 
-    if (!vortoj) {
-        return {vortoj: 0, treFacilaj: 0, facilaj: [], malfacilaj: []};
-    }
+    while ((rezulto = vortoRe.exec(teksto)) !== null) {
+	teksteroj.push({tekstero: teksto.slice(ek, rezulto.index), nivelo: 0});
+	var vorto = rezulto[0];
+	ek = rezulto.index + vorto.length;
 
-    console.log("Trovis vortojn: " + vortoj.toString());
-
-    var malfacilaj = [], neTreFacilaj = [], treFacilaj = 0;
-
-    for (var i = 0; i < vortoj.length; i++) {
-        var vorto = vortoj[i];
         var minuskla = vorto.toLowerCase();
-        var rezulto = kontroliVorton(minuskla);
-        if (rezulto == 0) {
+        var nivelo = kontroliVorton(minuskla);
+        if (nivelo == 0) {
             treFacilaj++;
         }
-        else if (rezulto == 1) {
+        else if (nivelo == 1) {
             neTreFacilaj.push(vorto);
         }
         else {
             malfacilaj.push(vorto);
         }
+	teksteroj.push({tekstero: vorto, nivelo: nivelo});
     }
+    teksteroj.push({tekstero: teksto.slice(ek), nivelo: 0});
+    console.log(teksteroj);
     return {
-        vortoj: vortoj.length,
+	teksteroj: teksteroj,
+        vortoj: treFacilaj + neTreFacilaj.length + malfacilaj.length,
         treFacilaj: treFacilaj,
         facilaj: neTreFacilaj,
         malfacilaj: malfacilaj };
