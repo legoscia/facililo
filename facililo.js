@@ -149,18 +149,18 @@ function kontroliVorton(vorto) {
     return ĉuEnestas(arbo, vorto, true);
 }
 
-function ĉuEnestas(arbero, vorto, devasEstiSenfinaĵa) {
+function ĉuEnestas(arbero, vorto, devasEstiVorteto) {
     for (var i = 0; i < vorto.length; i++) {
         if (arbero[vorto[i]]) {
             arbero = arbero[vorto[i]];
             if (arbero['ekzistas']) {
                 if (i + 1 < vorto.length) {
 		    // XXX: skribtablo vs skribotablo
-                    if (ĉuEnestas(vorto.slice(i + 1), devasEstiSenfinaĵa) == 0) {
+                    if (ĉuEnestas(vorto.slice(i + 1), devasEstiVorteto) == 0) {
                         return 0;
                     }
                 }
-                else if (arbero['ekzistas'] == 2 || !devasEstiSenfinaĵa) {
+                else if (arbero['ekzistas'] == 2 || !devasEstiVorteto) {
                     return 0;
                 }
             }
