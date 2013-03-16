@@ -33,14 +33,19 @@ function enarbigu(arbero, vortero, tipo) {
 }
         
 var arbo = [];
-for (var i = 0; i < Object.keys(vortaroTreFacilaj).length; i++) {
-    var vorto = Object.keys(vortaroTreFacilaj)[i];
+for (var vorto in vortaroTreFacilaj) {
     var tipo = vortaroTreFacilaj[vorto];
     if (tipo == 1) {
         // por vortoj kun vortklasa finaĵo, konservu nur radikon
         vorto = vorto.slice(0, vorto.length - 1);
     }
     arbo = enarbigu(arbo, vorto, tipo);
+}
+for (var i in prefiksojTreFacilaj) {
+    arbo = enarbigu(arbo, prefiksojTreFacilaj[i], 1);
+}
+for (var i in sufiksojTreFacilaj) {
+    arbo = enarbigu(arbo, sufiksojTreFacilaj[i], 1);
 }
 
 var FaciliĝuModelo = function() {
