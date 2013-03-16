@@ -41,6 +41,7 @@ kaj
 
 <div>
 <textarea
+  id="tekstujo"
   data-bind="value: teksto, valueUpdate: 'afterkeydown'"
   placeholder="Tajpu facilan tekston!"
   rows="15" cols="65"></textarea>
@@ -51,7 +52,7 @@ kaj
   <div data-bind="if: vortoj &gt; 0">
     <span data-bind="if: treFacilaj == 0">Neniuj tre facilaj vortoj.</span>
     <span data-bind="if: treFacilaj == 1">Unu tre facila vorto.</span>
-    <span data-bind="if: treFacilaj &gt; 1, text: treFacilaj + ' tre facilaj vortoj.'"></span>
+    <span data-bind="if: (treFacilaj &gt; 1)"><span data-bind="text: treFacilaj + ' tre facilaj vortoj.'"></span></span>
     <div data-bind="if: facilaj.length &gt; 0">
       La jenaj vortoj estas "facilaj", sed ne "tre facilaj":
       <ul data-bind="foreach: facilaj">
