@@ -41,13 +41,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 kaj
 <a href="http://remush.be/tezauro/Kontakto.html">vortolisto</a> de Kontakto.
 
-<div>
+<div id="ekstera">
 <textarea
   id="tekstujo"
   data-bind="value: teksto, valueUpdate: 'afterkeydown'"
   placeholder="Tajpu facilan tekston!"
   rows="15" cols="65"></textarea>
-</div>
 
 <div data-bind="with: kontrolorezulto">
   <div id="montrujo" data-bind="foreach: teksteroj"><span data-bind="
@@ -71,6 +70,8 @@ kaj
     </div>
   </div>
 </div>
+</div>
+
 
 <script src='facililo.js'></script>
 

@@ -1,9 +1,24 @@
+* {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+#ekstera {
+    max-width: 30em;
+}
+
+textarea {
+    width: 100%;
+}
+
 #montrujo {
     border: solid 1px;
-    margin: 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
     padding: 1em;
     border-radius: 1em;
-    max-width: 40em;
+    width: 100%;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
 }
 
