@@ -1,4 +1,10 @@
-#montrujo { margin: 2em; }
+#montrujo {
+    border: solid 1px;
+    margin: 2em;
+    padding: 1em;
+    border-radius: 1em;
+    max-width: 40em;
+}
 
 .trefacila { background-color: rgb(192, 255, 192); }
 .facila    { background-color: rgb(192, 220, 255); }
