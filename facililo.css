@@ -11,6 +11,8 @@
 textarea {
     width: 100%;
     font-family: serif;
+    /* la tekstujo kovru ne pli ol 30% de la ekrano laŭ alteco */
+    height: 30vh;
 }
 
 #montrujo {
