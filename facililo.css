@@ -4,6 +4,15 @@
             box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+    background: -moz-linear-gradient(top, rgba(90,170,210,1) 0%, rgba(125,185,232,0) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(90,170,210,1)), color-stop(100%,rgba(125,185,232,0))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(90,170,210,1) 0%,rgba(125,185,232,0) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(90,170,210,1) 0%,rgba(125,185,232,0) 100%); /* Opera 11.10+ */
+    background: linear-gradient(to bottom, rgba(90,170,210,1) 0%,rgba(125,185,232,0) 100%); /* W3C */
+}
+
 #ekstera {
     max-width: 30em;
     margin-left: auto;
@@ -25,6 +34,8 @@ textarea {
     border-radius: 1em;
     width: 100%;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    font-color: black;
 }
 
 .trefacila { background-color: rgb(192, 255, 192); }
