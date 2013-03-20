@@ -59,11 +59,34 @@ for (var vorto in vortaroFacilaj) {
 var FaciliĝuModelo = function(komencaTeksto) {
     this.teksto = ko.observable(komencaTeksto);
     this.kontrolorezulto = ko.observable(kontrolu(komencaTeksto));
+    this.maliksigu = ko.observable(true);
 
-    var kunMalfruo = ko.computed(this.teksto).extend({ throttle: 500 });
+    var kunMalfruo = ko.computed(function() {
+	if (this.maliksigu()) {
+	    return maliksigu(this.teksto());
+	} else {
+	    return this.teksto();
+	}
+    }, this).extend({ throttle: 500 });
     kunMalfruo.subscribe(function(laTeksto) {
         this.kontrolorezulto(kontrolu(laTeksto));
     }, this);
+}
+
+function maliksigu(teksto) {
+    return teksto
+	.replace("Cx", "Ĉ")
+	.replace("Gx", "Ĝ")
+	.replace("Hx", "Ĥ")
+	.replace("Jx", "Ĵ")
+	.replace("Sx", "Ŝ")
+	.replace("Ux", "Ŭ")
+	.replace("cx", "ĉ")
+	.replace("gx", "ĝ")
+	.replace("hx", "ĥ")
+	.replace("jx", "ĵ")
+	.replace("sx", "ŝ")
+	.replace("ux", "ŭ");
 }
 
 function kontrolu(teksto) {
