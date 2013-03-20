@@ -58,7 +58,7 @@ for (var vorto in vortaroFacilaj) {
 
 var FaciliĝuModelo = function(komencaTeksto) {
     this.teksto = ko.observable(komencaTeksto);
-    this.kontrolorezulto = ko.observable(kontrolu(komencaTeksto));
+    this.kontrolorezulto = ko.observable(kontrolu(maliksigu(komencaTeksto)));
     this.maliksigu = ko.observable(true);
 
     var kunMalfruo = ko.computed(function() {
@@ -75,18 +75,18 @@ var FaciliĝuModelo = function(komencaTeksto) {
 
 function maliksigu(teksto) {
     return teksto
-	.replace("Cx", "Ĉ")
-	.replace("Gx", "Ĝ")
-	.replace("Hx", "Ĥ")
-	.replace("Jx", "Ĵ")
-	.replace("Sx", "Ŝ")
-	.replace("Ux", "Ŭ")
-	.replace("cx", "ĉ")
-	.replace("gx", "ĝ")
-	.replace("hx", "ĥ")
-	.replace("jx", "ĵ")
-	.replace("sx", "ŝ")
-	.replace("ux", "ŭ");
+	.replace(/Cx/g, "Ĉ")
+	.replace(/Gx/g, "Ĝ")
+	.replace(/Hx/g, "Ĥ")
+	.replace(/Jx/g, "Ĵ")
+	.replace(/Sx/g, "Ŝ")
+	.replace(/Ux/g, "Ŭ")
+	.replace(/cx/g, "ĉ")
+	.replace(/gx/g, "ĝ")
+	.replace(/hx/g, "ĥ")
+	.replace(/jx/g, "ĵ")
+	.replace(/sx/g, "ŝ")
+	.replace(/ux/g, "ŭ");
 }
 
 function kontrolu(teksto) {
