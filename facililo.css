@@ -30,12 +30,17 @@ textarea {
     border: solid 1px;
     margin-top: 2em;
     margin-bottom: 2em;
-    padding: 1em;
+    padding: 1ex 1em 1ex 1em;
     border-radius: 1em;
     width: 100%;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
     background-color: white;
     font-color: black;
+}
+
+#montrujo p {
+    margin-top: 1ex;
+    margin-bottom: 1ex;
 }
 
 .trefacila { background-color: rgb(192, 255, 192); }

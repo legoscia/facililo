@@ -50,8 +50,8 @@ kaj
   rows="10" cols="65"></textarea>
 
 <div data-bind="with: kontrolorezulto">
-  <div id="montrujo" data-bind="foreach: teksteroj"><span data-bind="
-      text: tekstero, css: (nivelo == 0) ? 'trefacila' : (nivelo == 1) ? 'facila' : 'malfacila'"></span></div>
+  <div id="montrujo" data-bind="foreach: alineoj"><p data-bind="foreach: $data"><span data-bind="
+      text: tekstero, css: (nivelo == 0) ? 'trefacila' : (nivelo == 1) ? 'facila' : 'malfacila'"></span></p></div>
   <span data-bind="if: vortoj == 0">Nenio estas tajpita.</span>
   <div data-bind="if: vortoj &gt; 0">
     <span data-bind="if: treFacilaj == 0">Neniuj tre facilaj vortoj.</span>

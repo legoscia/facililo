@@ -94,11 +94,32 @@ function kontrolu(teksto) {
     teksteroj.push({tekstero: teksto.slice(ek), nivelo: 0});
     console.log(teksteroj);
     return {
-	teksteroj: teksteroj,
+	alineoj: alineigu(teksteroj),
         vortoj: treFacilaj + neTreFacilaj.length + malfacilaj.length,
         treFacilaj: treFacilaj,
         facilaj: neTreFacilaj,
         malfacilaj: malfacilaj };
+}
+
+function alineigu(teksteroj) {
+    var nunaAlineo = [], alineoj = [nunaAlineo];
+
+    for (var i = 0; i < teksteroj.length; i++) {
+	var tekstero = teksteroj[i];
+	var linioj = tekstero.tekstero.split(/\n+/);
+	if (linioj === null || linioj.length <= 1) {
+	    nunaAlineo.push(tekstero);
+	} else {
+	    for (var j = 0; j < linioj.length; j++) {
+		nunaAlineo.push({tekstero: linioj[j], nivelo: tekstero.nivelo});
+		if (j < linioj.length - 1) {
+		    nunaAlineo = [];
+		    alineoj.push(nunaAlineo);
+		}
+	    }
+	}
+    }
+    return alineoj;
 }
 
 // Se 'sufikso' estas ĉe la fino de 'vorto', redonu 'vorto'n sen
