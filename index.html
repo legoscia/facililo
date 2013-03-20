@@ -50,26 +50,13 @@ kaj
   rows="10" cols="65"></textarea>
 
 <div data-bind="with: kontrolorezulto">
+  <span class="trefacila">Tre facilaj: <span data-bind="text: treFacilaj"></span></span>
+  <span class="facila">Facilaj: <span data-bind="text: facilaj.length"></span></span>
+  <span class="malfacila">Malfacilaj: <span data-bind="text: malfacilaj.length"></span></span>
+
   <div id="montrujo" data-bind="foreach: alineoj"><p data-bind="foreach: $data"><span data-bind="
       text: tekstero, css: (nivelo == 0) ? 'trefacila' : (nivelo == 1) ? 'facila' : 'malfacila'"></span></p></div>
-  <span data-bind="if: vortoj == 0">Nenio estas tajpita.</span>
-  <div data-bind="if: vortoj &gt; 0">
-    <span data-bind="if: treFacilaj == 0">Neniuj tre facilaj vortoj.</span>
-    <span data-bind="if: treFacilaj == 1">Unu tre facila vorto.</span>
-    <span data-bind="if: (treFacilaj &gt; 1)"><span data-bind="text: treFacilaj + ' tre facilaj vortoj.'"></span></span>
-    <div data-bind="if: facilaj.length &gt; 0">
-      La jenaj vortoj estas "facilaj", sed ne "tre facilaj":
-      <ul data-bind="foreach: facilaj">
-        <li data-bind="text: $data">
-      </ul>
-    </div>
-    <div data-bind="if: malfacilaj.length &gt; 0">
-      La jenaj vortoj estas nek "facilaj" nek "tre facilaj":
-      <ul data-bind="foreach: malfacilaj">
-        <li data-bind="text: $data">
-      </ul>
-    </div>
-  </div>
+
 </div>
 </div>
 
