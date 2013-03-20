@@ -159,7 +159,7 @@ var vortaroTreFacilaj = { /* "-a", */
   /* "-ig", */
   /* "-iĝ", */
   /* "-il", */
-  "ili": 2,
+  // "ili": 2,
   /* "-in", */
   /* "-ind", */
   "infano": 1,
@@ -248,7 +248,7 @@ var vortaroTreFacilaj = { /* "-a", */
   "lerni": 1,
   "letero": 1,
   "levi": 1,
-  "li": 2,
+  // "li": 2,
   "libera": 1,
   "libro": 1,
   "ligi": 1,
@@ -278,7 +278,7 @@ var vortaroTreFacilaj = { /* "-a", */
   "meti": 1,
   "metodo": 1,
   "mezo": 1,
-  "mi": 2,
+  // "mi": 2,
   "mil": 2,
   "miliono": 1,
   "militi": 1,
@@ -454,7 +454,7 @@ var vortaroTreFacilaj = { /* "-a", */
   "ŝajni": 1,
   "ŝanĝi": 1,
   "ŝati": 1,
-  "ŝi": 2,
+  // "ŝi": 2,
   "ŝipo": 1,
   "ŝranko": 1,
   "ŝtato": 1,
@@ -511,7 +511,7 @@ var vortaroTreFacilaj = { /* "-a", */
   "vespero": 1,
   "vesto": 1,
   "veturi": 1,
-  "vi": 2,
+  // "vi": 2,
   "viando": 1,
   "vidi": 1,
   "vilaĝo": 1,
@@ -524,6 +524,17 @@ var vortaroTreFacilaj = { /* "-a", */
   "vorto": 1,
   "zorgi": 1,
 };
+
+var personajPronomoj = [
+    "mi",
+    "vi",
+    "li",
+    "ŝi",
+    // "ĝi" ne aperas en la listo de mil vortoj. Ĉu intence?
+    // "ĝi",
+    "ni",
+    "ili",
+];
 
 var prefiksojTreFacilaj = [ "bo",
   "dis",

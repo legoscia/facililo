@@ -145,6 +145,15 @@ function senSufiksoj(vorto, sufiksoj) {
 
 // 0 = tre facila vorto, 1 = facila vorto, 2 = malfacila vorto
 function kontroliVorton(vorto) {
+    // Ĉu ĝi estas persona aŭ poseda pronomo?
+    var pronomo;
+    // atentu pri la ordo de sufiksoj!
+    if (pronomo = senSufiksoj(vorto, ["a", "an", "aj", "ajn", "n", ""])) {
+	if (personajPronomoj.indexOf(pronomo) != -1) {
+	    return 0;
+	}
+    }
+
     // Ĉu ĝi estas verbo?
     var verbradiko;
     if (verbradiko = senSufiksoj(vorto, ["i", "as", "is", "os", "us", "u"])) {
