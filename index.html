@@ -54,7 +54,10 @@ kaj
   <span class="facila">Facilaj: <span data-bind="text: facilaj.length"></span></span>
   <span class="malfacila">Malfacilaj: <span data-bind="text: malfacilaj.length"></span></span>
 
+  <div id="regiloj">
   <label id="etikedoMaliksigu"><input type="checkbox" data-bind="checked: $root.maliksigu"> cx → ĉ</label>
+  <button id="rekontrolu" type="button" data-bind="event: { click: $root.rekontrolu }">Rekontrolu</button>
+  </div>
 
   <div id="montrujo" data-bind="foreach: alineoj"><p data-bind="foreach: $data"><span data-bind="
       text: tekstero, css: (nivelo == 0) ? 'trefacila' : (nivelo == 1) ? 'facila' : 'malfacila'"></span></p></div>

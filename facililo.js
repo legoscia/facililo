@@ -61,16 +61,27 @@ var FaciliĝuModelo = function(komencaTeksto) {
     this.kontrolorezulto = ko.observable(kontrolu(maliksigu(komencaTeksto)));
     this.maliksigu = ko.observable(true);
 
-    var kunMalfruo = ko.computed(function() {
+    this.ebleMaliksigita = ko.computed(function() {
 	if (this.maliksigu()) {
 	    return maliksigu(this.teksto());
 	} else {
 	    return this.teksto();
 	}
-    }, this).extend({ throttle: 500 });
+    }, this);
+    var kunMalfruo = ko.computed(this.ebleMaliksigita).extend({ throttle: 500 });
     kunMalfruo.subscribe(function(laTeksto) {
         this.kontrolorezulto(kontrolu(laTeksto));
     }, this);
+
+    var self = this;
+    this.rekontrolu = function() {
+	var teksto = self.ebleMaliksigita();
+	console.log(teksto);
+	var rezulto = kontrolu(teksto);
+	console.log(rezulto);
+	self.kontrolorezulto(rezulto);
+	console.log("ŝanĝita!");
+    };
 }
 
 function maliksigu(teksto) {

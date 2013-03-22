@@ -26,11 +26,12 @@ textarea {
     height: 30vh;
 }
 
-#etikedoMaliksigu {
+#regiloj {
     float: right;
 }
 
 #montrujo {
+    clear: right;
     border: solid 1px;
     margin-top: 1em;
     margin-bottom: 2em;
