@@ -475,4 +475,15 @@ var vortaroFacilaj = {
   "voki": 1,
   "volvi": 1,
   "vosto": 1,
+
+  // participoj.  la kodo havas specialan kazon por vortoj finiĝantaj
+  // per "-anto", ĉar taj vortoj estas "tre facilaj" se la baza verbo
+  // ankaŭ estas.  aliaj uzoj de participoj signifas ke la vorto povas
+  // esti nur "facila" aŭ "malfacila".
+  "anto": 1,
+  "ato": 1,
+  "into": 1,
+  "ito": 1,
+  "onto": 1,
+  "oto": 1,
 };

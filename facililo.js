@@ -188,9 +188,12 @@ function kontroliVorton(vorto) {
 	}
     }
 
-    // Ĉu ĝi estas verbo?
+    // Ĉu ĝi estas verbo?  Aŭ ĉu ĝi estas substantivo finiĝanta je
+    // "-anto", la sola participa finaĵo permesata en la nivelo "tre
+    // facila"?
     var verbradiko;
-    if (verbradiko = senSufiksoj(vorto, ["i", "as", "is", "os", "us", "u"])) {
+    if (verbradiko = senSufiksoj(vorto, ["i", "as", "is", "os", "us", "u",
+					 "anto", "anton", "antoj", "antojn"])) {
         var rezulto = ĉuEnestas(arbo, verbradiko, false);
         if (rezulto < 2) {
             return rezulto;
