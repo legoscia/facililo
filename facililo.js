@@ -282,7 +282,7 @@ function ĉuEnestas(arbero, vorto, devasEstiVorteto) {
 
 var jamaTeksto, rezulto;
 if (window.location.search && (rezulto = /t=([^&]+)/.exec(window.location.search))) {
-    jamaTeksto = decodeURIComponent(rezulto[1]);
+    jamaTeksto = decodeURIComponent(rezulto[1].replace(/\+/g, " "));
 }
 else if (jamaTeksto = document.getElementById('tekstujo').value) {
 }
