@@ -56,7 +56,14 @@ for (var vorto in vortaroFacilaj) {
     arbo = enarbigu(arbo, vorto, tipo, 1);
 }
 
-var FaciliĝuModelo = function(komencaTeksto) {
+var FaciliĝuModelo = function(komencaTeksto, redaktebla) {
+    var self = this;
+
+    this.redaktebla = ko.observable(redaktebla);
+    this.redaktebligu = function() {
+	self.redaktebla(true);
+    };
+
     this.teksto = ko.observable(komencaTeksto);
     this.kontrolorezulto = ko.observable(kontrolu(maliksigu(komencaTeksto)));
     this.maliksigu = ko.observable(true);
@@ -73,7 +80,6 @@ var FaciliĝuModelo = function(komencaTeksto) {
         this.kontrolorezulto(kontrolu(laTeksto));
     }, this);
 
-    var self = this;
     this.rekontrolu = function() {
 	var teksto = self.ebleMaliksigita();
 	console.log(teksto);
@@ -280,13 +286,14 @@ function ĉuEnestas(arbero, vorto, devasEstiVorteto) {
     return 2;
 }
 
-var jamaTeksto, rezulto;
+var jamaTeksto, rezulto, redaktebla = true;
 if (window.location.search && (rezulto = /t=([^&]+)/.exec(window.location.search))) {
     jamaTeksto = decodeURIComponent(rezulto[1].replace(/\+/g, " "));
+    redaktebla = false;
 }
 else if (jamaTeksto = document.getElementById('tekstujo').value) {
 }
 else {
     jamaTeksto = "";
 }
-ko.applyBindings(new FaciliĝuModelo(jamaTeksto));
+ko.applyBindings(new FaciliĝuModelo(jamaTeksto, redaktebla));
