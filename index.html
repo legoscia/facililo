@@ -63,12 +63,12 @@ kaj
   <button id="rekontrolu" type="button" data-bind="event: { click: $root.rekontrolu }">Rekontrolu</button>
   </div>
 
-  <div id="montrujo" data-bind="foreach: alineoj"><p data-bind="foreach: $data"><span data-bind="
+  <div id="montrujo" data-bind="visible: alineoj.length &gt; 0, foreach: alineoj"><p data-bind="foreach: $data"><span data-bind="
       text: tekstero, css: (nivelo == 0) ? 'trefacila' : (nivelo == 1) ? 'facila' : 'malfacila'"></span></p></div>
 
 </div>
 
-<p data-bind="visible: redaktebla"><a href="" data-bind="click: kreuURLn">Diskonigu vian tekston!</a></p>
+<p data-bind="visible: redaktebla() && kontrolorezulto().alineoj.length &gt; 0"><a href="" data-bind="click: kreuURLn">Diskonigu vian tekston!</a></p>
 
 <div data-bind="if: url">
 <div id="diskonigujo">
