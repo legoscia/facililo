@@ -82,6 +82,13 @@ var FaciliĝuModelo = function(komencaTeksto) {
 	self.kontrolorezulto(rezulto);
 	console.log("ŝanĝita!");
     };
+
+    this.url = ko.observable(null);
+    this.kreuURLn = function() {
+	var kodigitaTeksto = encodeURIComponent(self.ebleMaliksigita());
+	var novaURL = window.location.href.replace(/\?.*$/, "") + "?t=" + kodigitaTeksto;
+	this.url(novaURL);
+    };
 }
 
 function maliksigu(teksto) {
@@ -273,4 +280,13 @@ function ĉuEnestas(arbero, vorto, devasEstiVorteto) {
     return 2;
 }
 
-ko.applyBindings(new FaciliĝuModelo(document.getElementById('tekstujo').value));
+var jamaTeksto, rezulto;
+if (window.location.search && (rezulto = /t=([^&]+)/.exec(window.location.search))) {
+    jamaTeksto = decodeURIComponent(rezulto[1]);
+}
+else if (jamaTeksto = document.getElementById('tekstujo').value) {
+}
+else {
+    jamaTeksto = "";
+}
+ko.applyBindings(new FaciliĝuModelo(jamaTeksto));

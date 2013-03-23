@@ -63,7 +63,26 @@ kaj
       text: tekstero, css: (nivelo == 0) ? 'trefacila' : (nivelo == 1) ? 'facila' : 'malfacila'"></span></p></div>
 
 </div>
+
+<p><a href="" data-bind="click: kreuURLn">Diskonigu vian tekston!</a></p>
+
+<div data-bind="if: url">
+<div id="diskonigujo">
+Kopiu la adreson:
+<input type="text" data-bind="value: url" id="urlujo">
+aŭ
+<form action="http://www.facebook.com/sharer.php" method="get">
+<input type="hidden" name="s" value="100">
+<input type="hidden" name="p[url]" data-bind="value: url">
+<input type="hidden" name="p[title]" value="Mi kreis facilan tekston">
+<input type="hidden" name="p[summary]" data-bind="value: ebleMaliksigita">
+<input type="submit" value="diskonigu ĉe Facebook">
+</form>
 </div>
+</div>
+
+</div>
+
 
 
 <script src='facililo.js'></script>
