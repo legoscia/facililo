@@ -121,7 +121,9 @@ function kontrolu(teksto) {
     var ek = 0;
 
     while ((rezulto = vortoRe.exec(teksto)) !== null) {
-	teksteroj.push({tekstero: teksto.slice(ek, rezulto.index), nivelo: 0});
+	if (ek < rezulto.index) {
+	    teksteroj.push({tekstero: teksto.slice(ek, rezulto.index), nivelo: 0});
+	}
 	var vorto = rezulto[0];
 	ek = rezulto.index + vorto.length;
 
@@ -138,7 +140,9 @@ function kontrolu(teksto) {
         }
 	teksteroj.push({tekstero: vorto, nivelo: nivelo});
     }
-    teksteroj.push({tekstero: teksto.slice(ek), nivelo: 0});
+    if (teksto.length > ek) {
+	teksteroj.push({tekstero: teksto.slice(ek), nivelo: 0});
+    }
     console.log(teksteroj);
     return {
 	alineoj: alineigu(teksteroj),
@@ -149,6 +153,8 @@ function kontrolu(teksto) {
 }
 
 function alineigu(teksteroj) {
+    if (teksteroj.length == 0) return [];
+
     var nunaAlineo = [], alineoj = [nunaAlineo];
 
     for (var i = 0; i < teksteroj.length; i++) {
