@@ -76,10 +76,16 @@ Kopiu la adreson:
 <input type="text" data-bind="value: url" id="urlujo">
 aŭ
 <form action="http://www.facebook.com/sharer.php" method="get">
+<!-- Tiuj ĉi valoroj estas uzataj ĉe "veraj" komputiloj,
+     sed Facebook ignoras ilin en poŝtelefonaj retumiloj.
+-->
 <input type="hidden" name="s" value="100">
 <input type="hidden" name="p[url]" data-bind="value: url">
 <input type="hidden" name="p[title]" value="Mi kreis facilan tekston">
 <input type="hidden" name="p[summary]" data-bind="value: ebleMaliksigita">
+<!-- Tiu ĉi valoro estas por poŝtelefonaj retumiloj. -->
+<input type="hidden" name="u" data-bind="value: url">
+<!-- Kaj la butono: -->
 <input type="submit" value="diskonigu ĉe Facebook">
 </form>
 </div>
