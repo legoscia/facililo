@@ -114,7 +114,10 @@ function maliksigu(teksto) {
 }
 
 function kontrolu(teksto) {
-    var vortoRe = /[a-zĉĝĥĵŝŭ]+/gi;
+    // antaŭe mi uzis usklec-indiferentan komparilon, sed Opera ne
+    // ŝatis ĝin.  anstataŭe mi listigas la literojn po unu fojo por
+    // uskleco.
+    var vortoRe = /[A-ZĈĜĤĴŜŬa-zĉĝĥĵŝŭ]+/g;
     var rezulto;
 
     var teksteroj = [], malfacilaj = [], neTreFacilaj = [], treFacilaj = 0;
