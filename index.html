@@ -27,8 +27,8 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
 <script type='text/javascript' src='knockout-2.2.1.js'></script>
-<script type='text/javascript' src='trefacilaj.js'></script>
-<script type='text/javascript' src='facilaj.js'></script>
+<script type='text/javascript' src='trefacilaj.js' charset='utf-8'></script>
+<script type='text/javascript' src='facilaj.js' charset='utf-8'></script>
 
 <link rel="stylesheet" href="facililo.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,10 +68,12 @@ kaj
 
 </div>
 
-<p data-bind="visible: redaktebla() && kontrolorezulto().alineoj.length &gt; 0"><a href="" data-bind="click: kreuURLn">Diskonigu vian tekston!</a></p>
+<p data-bind="visible: !url() && redaktebla() && kontrolorezulto().alineoj.length &gt; 0"><a href="" data-bind="click: kreuURLn">Diskonigu vian tekston!</a></p>
 
 <div data-bind="if: url">
 <div id="diskonigujo">
+<span title="Fermu la diskonigfenestreton" data-bind="click: nuliguURLn"
+   id="fermuDiskonigujon">✗</span>
 Kopiu la adreson:
 <input type="text" data-bind="value: url" id="urlujo">
 aŭ
@@ -98,7 +100,7 @@ aŭ
 
 </div> <!-- #ekstera -->
 
-<script src='facililo.js'></script>
+<script src='facililo.js' charset='utf-8'></script>
 
 </body>
 </html>

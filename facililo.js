@@ -95,6 +95,9 @@ var FaciliĝuModelo = function(komencaTeksto, redaktebla) {
 	var novaURL = window.location.href.replace(/\?.*$/, "") + "?t=" + kodigitaTeksto;
 	this.url(novaURL);
     };
+    this.nuliguURLn = function() {
+	this.url(null);
+    };
 }
 
 function maliksigu(teksto) {
