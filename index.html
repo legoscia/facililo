@@ -45,6 +45,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 kaj
 <a href="http://remush.be/tezauro/Kontakto.html">vortolisto</a> de Kontakto.
 
+<a data-bind="click: montruHelpon" href="" id="helpobutono" title="Pli da informoj">?</a>
+
 <p data-bind="if: redaktebla">
 <textarea
   id="tekstujo"
@@ -73,7 +75,7 @@ kaj
 <div data-bind="if: url">
 <div id="diskonigujo">
 <span title="Fermu la diskonigfenestreton" data-bind="click: nuliguURLn"
-   id="fermuDiskonigujon">✗</span>
+   class="fermilo">✗</span>
 <a data-bind="attr: { href: url }">Uzu tiun ĉi ligilon</a>
 aŭ kopiu la adreson:
 <input type="text" data-bind="value: url" id="urlujo">
@@ -100,6 +102,64 @@ aŭ
 </p>
 
 </div> <!-- #ekstera -->
+
+<div id="eksterhelpujo" data-bind="visible: montrasHelpon">
+<div id="helpujo">
+<span title="Fermu la informfenestron" data-bind="click: malmontruHelpon"
+   class="fermilo">✗</span>
+<h1>Kio estas tio ĉi?</h1>
+
+<p>La "facililo" kontrolas ĉu la enskribita teksto enhavas nur la
+radikojn en la <a href="http://remush.be/tezauro/Kontakto.html">listo
+de "tre facilaj" kaj "facilaj" vortoj</a> uzata
+de <a href="http://kontakto.tejo.org">Kontakto</a>.
+
+<h1>Ĝi ne estas korekteckontrolilo</h1>
+
+<p>La "facililo" nur kontrolas ĉu iel eblas konstrui la enskribitajn
+  vortojn per la permesataj radikoj.  Ĝi volonte akceptas sensencajn
+  vortojn, kaj neniel kontrolas gramatikon.  Mi proponas al vi ankaŭ
+  uzi
+  la <a href="http://visl.sdu.dk/lingvohelpilo/">Lingvohelpilon</a>.
+
+<h1>Ĝi estas tro malpermesema</h1>
+
+<p>La "facililo" estas tre simpla: ĝi rigardas nur la vortoliston.
+  Sed laŭ
+  la <a href="http://kontakto.tejo.org/p/facila-kaj-tre-facila.html">reguloj
+  de Kontakto pri facilaj tekstoj</a> oni ankaŭ rajtas uzi nomojn de
+  homoj, landoj, lingvoj ktp.  Tiajn la facililo tamen markas per ruĝa
+  koloro.
+
+<p>Cetere ĝi konsideras la vortojn "ĝi", "iu" kaj "iom" malfacila.  La
+  vortolisto estas memkontraŭdira: supre ĝi havas listojn de kelkaj
+  grupoj de vortoj, inter ili pronomoj, sed sube estas listo de
+  mil vortoj, kie aperas preskaŭ ĉiuj el tiuj vortoj, sed mankas ĝuste
+  "ĝi", "iu" kaj "iom".  Mi ne scias kial ĝuste tiuj vortoj mankas, do
+  mi elektis sekvi <em>nur</em> la milvortan liston.
+
+<h1>Ĝi estas tro permesema</h1>
+
+<p>Laŭ la reguloj, facila teksto uzu simplajn frazostrukturojn kaj
+  evitu pezajn kunmetaĵojn.  Pri tio tute ne zorgas la facililo; ĝi
+  volonte markas la vorton "nereĝojigeblulo" kiel facilan.
+
+<p>Cetere, kelkaj kunmetaĵoj konfuzas la facililon.  Ekzemple "idealo"
+  estas "facila" vorto laŭ la listo, sed la facililo konsideras ĝin
+  "tre facila" ĉar ĝi espektas kiel kunmetaĵo de du "tre facilaj"
+  vortoj: "ideo" kaj "al".
+
+<h1>La fontokodo estas libera</h1>
+
+<p><a href="http://github.com/legoscia/facililo">La fontokodo de la
+    facililo</a> estas libere havebla laŭ la permesilo de MIT.  Tio
+    signifas ke oni rajtas iel ajn uzi, kopii kaj ŝanĝi ĝin, kondiĉe
+    nur ke oni agnoskas mian aŭtorecon.</p>
+
+<button data-bind="click: malmontruHelpon">Fermi</button>
+
+</div>
+</div>
 
 <script src='facililo.js' charset='utf-8'></script>
 

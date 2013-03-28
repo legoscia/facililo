@@ -98,6 +98,14 @@ var FaciliĝuModelo = function(komencaTeksto, redaktebla) {
     this.nuliguURLn = function() {
 	this.url(null);
     };
+
+    this.montrasHelpon = ko.observable(false);
+    this.montruHelpon = function() {
+	self.montrasHelpon(true);
+    };
+    this.malmontruHelpon = function() {
+	self.montrasHelpon(false);
+    };
 }
 
 function maliksigu(teksto) {
