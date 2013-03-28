@@ -13,6 +13,16 @@ html {
     background: linear-gradient(to bottom, rgba(90,170,210,1) 0%,rgba(125,185,232,0) 100%); /* W3C */
 }
 
+h1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    font-size: 0.7em;
+    font-family: sans-serif;
+    font-variant: small-caps;
+}
+
 #ekstera {
     max-width: 30em;
     margin-left: auto;
@@ -106,7 +116,7 @@ textarea {
     box-shadow: 0.2em 0.2em 3em rgba(0, 0, 0, 0.8);
 }
 
-#helpujo h1 {
+#helpujo h2 {
     font-family: sans-serif;
     font-size: 1em;
     clear: none;
