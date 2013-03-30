@@ -56,7 +56,7 @@ var vortaroTreFacilaj = { /* "-a", */
   "ĉielo": 1,
   "ĉio": 2, "ĉion": 2,
   "ĉirkaŭ": 2,
-  "ĉiu": 2,
+  "ĉiu": 2, "ĉiun": 2, "ĉiuj": 2, "ĉiujn": 2,
   "ĉu": 2,
   "da": 2,
   "danki": 1,
