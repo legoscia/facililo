@@ -64,7 +64,7 @@ textarea {
     width: 100%;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
     background-color: white;
-    font-color: black;
+    color: black;
 }
 
 #montrujo p {
@@ -83,7 +83,7 @@ textarea {
     padding: 1ex 1em 1ex 1em;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
     background-color: white;
-    font-color: black;
+    color: black;
 }
 
 #urlujo {
