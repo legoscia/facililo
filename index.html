@@ -41,7 +41,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 <div id="eksterhelpujo" data-bind="visible: montrasHelpon">
 <div id="helpujo">
 <span title="Fermu la informfenestron" data-bind="click: malmontruHelpon"
-   class="fermilo">✗</span>
+   class="fermilo" role="button">✗</span>
 <h2>Kio estas tio ĉi?</h2>
 
 <p>La "facililo" kontrolas ĉu la enskribita teksto enhavas nur la
@@ -140,7 +140,11 @@ kaj
 <a href="http://remush.be/tezauro/Kontakto.html">vortolisto</a> de
 Kontakto.</label>
 
-<a data-bind="click: montruHelpon" href="" id="helpobutono" title="Pli da informoj">?</a>
+<a role="button"
+   data-bind="click: montruHelpon"
+   href=""
+   id="helpobutono"
+   title="Pli da informoj">?</a>
 
 <p data-bind="if: redaktebla">
 <textarea
