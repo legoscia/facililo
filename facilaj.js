@@ -1392,7 +1392,7 @@ var vortaroAnstatauigendaj = {
 "ĵurio": 1,
 "ĵurnalo": 1,
 "kaĉaloto": 1,
-"kadro 1: 1,
+"kadro": 1,
 "kafeterio": 1,
 "kaĥekta": 1,
 "kaĥeksio": 1,

@@ -47,8 +47,17 @@ for (var i in prefiksojTreFacilaj) {
 for (var i in sufiksojTreFacilaj) {
     arbo = enarbigu(arbo, sufiksojTreFacilaj[i], 1, 0);
 }
-for (var vorto in vortaroFacilaj) {
-    var tipo = vortaroFacilaj[vorto];
+// for (var vorto in vortaroFacilaj) {
+//     var tipo = vortaroFacilaj[vorto];
+//     if (tipo == 1) {
+//         // por vortoj kun vortklasa finaĵo, konservu nur radikon
+//         vorto = vorto.slice(0, vorto.length - 1);
+//     }
+//     arbo = enarbigu(arbo, vorto, tipo, 1);
+// }
+// XXX: intertempe anstataŭigendaj vortoj estas "facilaj".
+for (var vorto in vortaroAnstatauigendaj) {
+    var tipo = vortaroAnstatauigendaj[vorto];
     if (tipo == 1) {
         // por vortoj kun vortklasa finaĵo, konservu nur radikon
         vorto = vorto.slice(0, vorto.length - 1);
