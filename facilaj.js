@@ -789,7 +789,7 @@ var vortaroAnstatauigendaj = {
 "cerebro": 1,
 "certa": 1,
 "cerumeno": 1,
-"ci": 1,
+"ci": 2, /* estis 1. Eble tute forigendas el la listo */
 "cianoforo": 1,
 "cicero": 1,
 "ciklo": 1,
@@ -1222,7 +1222,7 @@ var vortaroAnstatauigendaj = {
 "haĉi": 1,
 "halanĝo": 1,
 "halfo": 1,
-"ha": 1,
+"ha": 2, /* estis 1 */
 "halo!": 1,
 "halukso": 1,
 "handbalo": 1,
@@ -1805,7 +1805,7 @@ var vortaroAnstatauigendaj = {
 "mutili": 1,
 "muzikalo": 1,
 "muzulmano": 1,
-"na": 1,
+"na": 2, /* estis 1 */
 "nabo": 1,
 "najado": 1,
 "najlizi": 1,
@@ -2251,7 +2251,7 @@ var vortaroAnstatauigendaj = {
 "reziduo": 1,
 "rezistanco": 1,
 "rezoluta": 1,
-"ri": 1,
+"ri": 2, /* estis 1 */
 "riceli": 1,
 "ricelisto": 1,
 "rifo": 1,
@@ -2294,7 +2294,7 @@ var vortaroAnstatauigendaj = {
 "rungo": 1,
 "rura": 1,
 "rustika": 1,
-"sa": 1,
+"sa": 2, /* estis 1 */
 "sacerdoto": 1,
 "sadhuo": 1,
 "sagitario": 1,
