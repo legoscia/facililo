@@ -598,7 +598,7 @@ var vortaroAnstatauigendaj = {
 "ankro": 1,
 "anormala": 1,
 "anso": 1,
-"ante": 1,
+"ante": 2, /*estis 1 "*/
 "antibiozo": 1,
 "antidoto": 1,
 "antimaterio": 1,
