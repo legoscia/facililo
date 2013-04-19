@@ -1922,9 +1922,9 @@ var vortaroAnstatauigendaj = {
 "pakto": 1,
 "palatalo": 1,
 "palavro": 1,
-"paleo": 1,
+"paleo": 2, /*estis 1 */
 "paleolitiko": 1,
-"palio": 1,
+"palio": 2, /* estis 1 */
 "paludismo": 1,
 "panaceo": 1,
 "pandemonio": 1,
@@ -1934,7 +1934,7 @@ var vortaroAnstatauigendaj = {
 "pansaĵo": 1,
 "pretpansaĵo": 1,
 "papiamento": 1,
-"para": 1,
+"para": 2, /* estis 1 */
 "paralimpiko": 1,
 "paraolimpiko": 1,
 "parapeto": 1,
