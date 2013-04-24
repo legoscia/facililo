@@ -485,12 +485,13 @@ var vortaroFacilaj = {
   // per "-anto", ĉar taj vortoj estas "tre facilaj" se la baza verbo
   // ankaŭ estas.  aliaj uzoj de participoj signifas ke la vorto povas
   // esti nur "facila" aŭ "malfacila".
+  /*
   "anto": 1,
   "ato": 1,
   "into": 1,
   "ito": 1,
   "onto": 1,
-  "oto": 1,
+  "oto": 1,  Mi provizore forigis tiujn liniojn  */
 };
 // mi simple aldonis la liston (laŭ la modelo de Magnus) 
 // estis kelkaj problemetoj: ekzemple "ci", "tiu": ĉu ili apartenas al la 1a aŭ 2a kategorio?
@@ -598,7 +599,7 @@ var vortaroAnstatauigendaj = {
 "ankro": 1,
 "anormala": 1,
 "anso": 1,
-"ante": 2, /*estis 1 "*/
+/* mi forigis ĉi tiun linion "ante": 2, estis 1 "*/
 "antibiozo": 1,
 "antidoto": 1,
 "antimaterio": 1,
@@ -643,7 +644,7 @@ var vortaroAnstatauigendaj = {
 "astronaŭtiko": 1,
 "astronomo": 1,
 "astronomio": 1,
-"ate": 1,
+/*"ate": 1,  mi forigis ĝin */
 "ateliero": 1,
 "ateljero": 1,
 "atenui": 1,
@@ -1367,7 +1368,7 @@ var vortaroAnstatauigendaj = {
 "iskiato": 1,
 "iskiatalgio": 1,
 "iskiatiko": 1,
-"iŝi": 1,
+"iŝi": 2, /* stis 1 */
 "itemo": 1,
 "itinero": 1,
 "ivi": 1,
@@ -1907,7 +1908,7 @@ var vortaroAnstatauigendaj = {
 "ostaĝo": 1,
 "osteopato": 1,
 "ostopatio": 1,
-"oto": 1,
+/* "oto": 1,  Forigite */
 "otalgio": 1,
 "otito": 1,
 "otologio": 1,
