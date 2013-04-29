@@ -39,13 +39,13 @@ for (var vorto in vortaroTreFacilaj) {
         // por vortoj kun vortklasa finaĵo, konservu nur radikon
         vorto = vorto.slice(0, vorto.length - 1);
     }
-    arbo = enarbigu(arbo, vorto, tipo, 0);
+    arbo = enarbigu(arbo, vorto, tipo, 'trefacila');
 }
 for (var i in prefiksojTreFacilaj) {
-    arbo = enarbigu(arbo, prefiksojTreFacilaj[i], 1, 0);
+    arbo = enarbigu(arbo, prefiksojTreFacilaj[i], 1, 'trefacila');
 }
 for (var i in sufiksojTreFacilaj) {
-    arbo = enarbigu(arbo, sufiksojTreFacilaj[i], 1, 0);
+    arbo = enarbigu(arbo, sufiksojTreFacilaj[i], 1, 'trefacila');
 }
 for (var vorto in vortaroFacilaj) {
     var tipo = vortaroFacilaj[vorto];
@@ -53,7 +53,7 @@ for (var vorto in vortaroFacilaj) {
         // por vortoj kun vortklasa finaĵo, konservu nur radikon
         vorto = vorto.slice(0, vorto.length - 1);
     }
-    arbo = enarbigu(arbo, vorto, tipo, 1);
+    arbo = enarbigu(arbo, vorto, tipo, 'facila');
 }
 
 var FaciliĝuModelo = function(komencaTeksto, redaktebla) {
@@ -136,17 +136,17 @@ function kontrolu(teksto) {
 
     while ((rezulto = vortoRe.exec(teksto)) !== null) {
 	if (ek < rezulto.index) {
-	    teksteroj.push({tekstero: teksto.slice(ek, rezulto.index), nivelo: 0});
+	    teksteroj.push({tekstero: teksto.slice(ek, rezulto.index), nivelo: 'trefacila'});
 	}
 	var vorto = rezulto[0];
 	ek = rezulto.index + vorto.length;
 
         var minuskla = vorto.toLowerCase();
         var nivelo = kontroliVorton(minuskla);
-        if (nivelo == 0) {
+        if (nivelo == 'trefacila') {
             treFacilaj++;
         }
-        else if (nivelo == 1) {
+        else if (nivelo == 'facila') {
             neTreFacilaj.push(vorto);
         }
         else {
@@ -155,7 +155,7 @@ function kontrolu(teksto) {
 	teksteroj.push({tekstero: vorto, nivelo: nivelo});
     }
     if (teksto.length > ek) {
-	teksteroj.push({tekstero: teksto.slice(ek), nivelo: 0});
+	teksteroj.push({tekstero: teksto.slice(ek), nivelo: 'trefacila'});
     }
     console.log(teksteroj);
     return {
@@ -210,14 +210,13 @@ function senSufiksoj(vorto, sufiksoj) {
     return null;
 }
 
-// 0 = tre facila vorto, 1 = facila vorto, 2 = malfacila vorto
 function kontroliVorton(vorto) {
     // Ĉu ĝi estas persona aŭ poseda pronomo?
     var pronomo;
     // atentu pri la ordo de sufiksoj!
     if (pronomo = senSufiksoj(vorto, ["a", "an", "aj", "ajn", "n", ""])) {
 	if (personajPronomoj.indexOf(pronomo) != -1) {
-	    return 0;
+	    return 'trefacila';
 	}
     }
 
@@ -228,7 +227,7 @@ function kontroliVorton(vorto) {
     if (verbradiko = senSufiksoj(vorto, ["i", "as", "is", "os", "us", "u",
 					 "anto", "anton", "antoj", "antojn"])) {
         var rezulto = ĉuEnestas(arbo, verbradiko, false);
-        if (rezulto < 2) {
+        if (rezulto != 'malfacila') {
             return rezulto;
         }
     }
@@ -237,7 +236,7 @@ function kontroliVorton(vorto) {
     var substantivradiko;
     if (substantivradiko = senSufiksoj(vorto, ["o", "on", "oj", "ojn"])) {
         var rezulto = ĉuEnestas(arbo, substantivradiko, false);
-        if (rezulto < 2) {
+        if (rezulto != 'malfacila') {
             return rezulto;
         }
     }
@@ -246,7 +245,7 @@ function kontroliVorton(vorto) {
     var adjektivradiko;
     if (adjektivradiko = senSufiksoj(vorto, ["a", "an", "aj", "ajn"])) {
         var rezulto = ĉuEnestas(arbo, adjektivradiko, false);
-        if (rezulto < 2) {
+        if (rezulto != 'malfacila') {
             return rezulto;
         }
     }
@@ -255,12 +254,20 @@ function kontroliVorton(vorto) {
     var adverbradiko;
     if (adverbradiko = senSufiksoj(vorto, ["e", "en"])) {
         var rezulto = ĉuEnestas(arbo, adverbradiko, false);
-        if (rezulto < 2) {
+        if (rezulto != 'malfacila') {
             return rezulto;
         }
     }
 
     return ĉuEnestas(arbo, vorto, true);
+}
+
+function pliAltaNivelo(a, b) {
+    var niveloj = [ 'trefacila', 'facila', 'malfacila' ];
+    if (niveloj.indexOf(a) > niveloj.indexOf(b))
+	return a;
+    else
+	return b;
 }
 
 function trovuVorterojn(arbero, vorto, komenco, minimumaNivelo) {
@@ -272,7 +279,7 @@ function trovuVorterojn(arbero, vorto, komenco, minimumaNivelo) {
 		vorteroj.push(
 		    { fino: i,
 		      tipo: arbero['ekzistas'].tipo,
-		      nivelo: Math.max(arbero['ekzistas'].nivelo, minimumaNivelo)
+		      nivelo: pliAltaNivelo(arbero['ekzistas'].nivelo, minimumaNivelo)
 		    });
             }
         }
@@ -303,7 +310,7 @@ function ĉuEnestas(arbero, vorto, devasEstiVorteto) {
 	vorteroj = novajVorteroj;
     }
 
-    return 2;
+    return 'malfacila';
 }
 
 var jamaTeksto, rezulto, redaktebla = true;
