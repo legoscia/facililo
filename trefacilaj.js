@@ -594,4 +594,13 @@ var sufiksojTreFacilaj = [// "a",
   "ul",
   "um",
   // "us",
+
+  // participaj finaĵoj:
+  "ant",
+  "at",
+  "int",
+  "it",
+  "ont",
+  "ot",
+
 ];
