@@ -162,6 +162,7 @@ Kontakto.</label>
   <div id="regiloj" data-bind="if: $root.redaktebla">
   <label id="etikedoMaliksigu"><input type="checkbox" data-bind="checked: $root.maliksigu"> cx → ĉ</label>
   <button id="rekontrolu" type="button" data-bind="event: { click: $root.rekontrolu }">Rekontrolu</button>
+  <button id="kopiu" type="button" data-clipboard-target="#montrujo">Kopiu</button>
   </div>
 
   <div id="montrujo" data-bind="visible: alineoj.length &gt; 0, foreach: alineoj"><p data-bind="foreach: $data"><span data-bind="
@@ -201,6 +202,12 @@ aŭ
 </p>
 
 </div> <!-- #ekstera -->
+
+<!-- El https://clipboardjs.com/ -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+<script>
+  new Clipboard('#kopiu');
+</script>
 
 <script src='facililo.js' charset='utf-8'></script>
 
