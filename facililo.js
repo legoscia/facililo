@@ -31,29 +31,40 @@ function enarbigu(arbero, vortero, tipo, nivelo) {
         return arbero;
     }
 }
-        
-var arbo = [];
-for (var vorto in vortaroTreFacilaj) {
-    var tipo = vortaroTreFacilaj[vorto];
-    if (tipo == 1) {
-        // por vortoj kun vortklasa finaĵo, konservu nur radikon
-        vorto = vorto.slice(0, vorto.length - 1);
+
+function enarbiguLaŭTipoj(arbo, vortoj, nivelo) {
+    for (var i = 0; i < vortoj.length; i++) {
+	var vorto = vortoj[i];
+	var tipo;
+	if (vorto[vorto.length - 1] == "-") {
+	    // vorto kiu bezonas vortoklasan finaĵon.  ni forigu la
+	    // streketon kaj konservu la radikon.
+	    vorto = vorto.slice(0, vorto.length - 1);
+	    tipo = 1;
+	}
+	else {
+	    // vorteto sen vortoklasa finaĵo
+	    tipo = 2;
+	}
+	arbo = enarbigu(arbo, vorto, tipo, nivelo);
     }
-    arbo = enarbigu(arbo, vorto, tipo, 'trefacila');
 }
+
+var arbo = [];
+enarbiguLaŭTipoj(arbo, vortaroTreFacilaj, 'trefacila');
 for (var i in prefiksojTreFacilaj) {
     arbo = enarbigu(arbo, prefiksojTreFacilaj[i], 1, 'trefacila');
 }
 for (var i in sufiksojTreFacilaj) {
     arbo = enarbigu(arbo, sufiksojTreFacilaj[i], 1, 'trefacila');
 }
-for (var vorto in vortaroFacilaj) {
-    var tipo = vortaroFacilaj[vorto];
-    if (tipo == 1) {
-        // por vortoj kun vortklasa finaĵo, konservu nur radikon
-        vorto = vorto.slice(0, vorto.length - 1);
-    }
-    arbo = enarbigu(arbo, vorto, tipo, 'facila');
+
+enarbiguLaŭTipoj(arbo, vortaroFacilaj, 'facila');
+for (var i in prefiksojFacilaj) {
+    arbo = enarbigu(arbo, prefiksojFacilaj[i], 1, 'facila');
+}
+for (var i in sufiksojFacilaj) {
+    arbo = enarbigu(arbo, sufiksojFacilaj[i], 1, 'facila');
 }
 
 var FaciliĝuModelo = function(komencaTeksto, redaktebla) {
