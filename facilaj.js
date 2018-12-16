@@ -534,4 +534,15 @@ var sufiksojFacilaj = [
     "on",
     "op",
     "um",
+
+    // participoj.  la kodo havas specialan kazon por vortoj finiĝantaj
+    // per "-anto", ĉar tiaj vortoj estas "tre facilaj" se la baza verbo
+    // ankaŭ estas.  aliaj uzoj de participoj signifas ke la vorto povas
+    // esti nur "facila" aŭ "malfacila".
+    "ant",
+    "at",
+    "int",
+    "it",
+    "ont",
+    "ot",
 ];
