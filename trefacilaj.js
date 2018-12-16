@@ -424,6 +424,7 @@ var vortaroTreFacilaj = [
     "star-",
     "strat-",
     "stud-",
+    "student-",
     "sub",
     "sufiĉ-",
     "sukces-",
