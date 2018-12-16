@@ -508,6 +508,7 @@ var personajPronomoj = [
     "ĝi",
     "ni",
     "ili",
+    "si",
 ];
 
 var prefiksojTreFacilaj = [
