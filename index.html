@@ -42,52 +42,54 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 <div id="helpujo">
 <span title="Fermu la informfenestron" data-bind="click: malmontruHelpon"
    class="fermilo" role="button">✗</span>
-<h2>Kio estas tio ĉi?</h2>
+<h2>Kio estas <em>Facililo</em>?</h2>
 
-<p>La "facililo" kontrolas ĉu la enskribita teksto enhavas nur la
-radikojn en la <a href="http://remush.be/tezauro/Kontakto.html">listo
-de "tre facilaj" kaj "facilaj" vortoj</a> uzata
-de <a href="http://kontakto.tejo.org">Kontakto</a>.
+<p>Per <em>Facililo</em> eblas kontroli, ĉu la enskribita teksto
+enhavas la radikojn en
+la <a href="https://uea.facila.org/paroli/">vortolisto</a> uzata
+de <a href="https://uea.facila.org">uea.facila.org</a>. Se radiko
+troviĝas en tiu vortlisto, ĝi estos signita verde aŭ blue.</p>
 
 <noscript><p>Ĝi funkcias plene per Javascript, sed via retumilo ne
     subtenas Javascript, aŭ ĝi estas malŝaltita!  Ŝaltu ruligadon de
     Javascript, aŭ uzu alian retumilon, por povi uzi la
     facililon.</p></noscript>
 
-<h2>Ĝi ne estas korekteckontrolilo</h2>
+<ul>
+<li>Verda signo: la vorto aperas en la listo “Tre facila”. </li>
+<li>Blua signo: la vorto aperas en la listo “Facila”.</li>
+<li>Ruĝa signo: la radiko tute ne aperas en la vortlisto. </li>
+</ul>
 
-<p>La "facililo" nur kontrolas ĉu iel eblas konstrui la enskribitajn
-  vortojn per la permesataj radikoj.  Ĝi volonte akceptas sensencajn
-  vortojn, kaj neniel kontrolas gramatikon.  Mi proponas al vi ankaŭ
-  uzi
-  la <a href="http://visl.sdu.dk/lingvohelpilo/">Lingvohelpilon</a>.
+<h2>Se aperos la ruĝa signo</h2>
 
-<h2>Ĝi estas tro malpermesema</h2>
+<p>Kiam oni verkas tekston por la retejo uea.facila, se vorto estas
+signita ruĝe, necesas ŝanĝi ĝin aŭ aldoni difinon. </p>
 
-<p>La "facililo" estas tre simpla: ĝi rigardas nur la vortoliston.
-  Sed laŭ
-  la <a href="http://kontakto.tejo.org/p/facila-kaj-tre-facila.html">reguloj
-  de Kontakto pri facilaj tekstoj</a> oni ankaŭ rajtas uzi nomojn de
-  homoj, landoj, lingvoj ktp.  Tiajn la facililo tamen markas per ruĝa
-  koloro.
+<p>Notu tamen, ke krom la radikoj en la listo, oni ankaŭ rajtas uzi la
+nomojn de homoj, landoj, lingvoj ks. <em>Facililo</em> signas ilin per
+ruĝa signo, ĉar ili ne troviĝas en la listo. Ili tamen estas
+akcepteblaj, kaj ne necesas aldoni por ili apartan difinon.</p>
 
-<p>Cetere ĝi konsideras la vortojn "ĝi", "iu" kaj "iom" malfacilaj.  La
-  vortolisto estas memkontraŭdira: supre ĝi havas listojn de kelkaj
-  grupoj de vortoj, inter ili pronomoj, sed sube estas listo de
-  mil vortoj, kie aperas preskaŭ ĉiuj el tiuj vortoj, sed mankas ĝuste
-  "ĝi", "iu" kaj "iom".  Mi ne scias kial ĝuste tiuj vortoj mankas, do
-  mi elektis sekvi <em>nur</em> la milvortan liston.
+<h2><em>Facililo</em> foje miskomprenas</h2>
 
-<h2>Ĝi estas tro permesema</h2>
+<p>Kelkaj kunmetaĵoj erarigas <em>Facililo</em>n. Ekzemple la radiko
+“tropik-” tute ne troviĝas en la listo, sed <em>Facililo</em> signas
+la vorton “tropika” blue, ĉar ĝi aspektas kiel kunmetaĵo de du
+permesataj eroj: “tro” kaj “pik-“.</p>
 
-<p>Laŭ la reguloj, facila teksto uzu simplajn frazostrukturojn kaj
-  evitu pezajn kunmetaĵojn.  Pri tio tute ne zorgas la facililo; ĝi
-  volonte markas la vorton "nereĝojigeblulo" kiel facilan.
+<h2><em>Facililo</em> ne kontrolas facilecon de la lingvaĵo</h2>
 
-<p>Cetere, kelkaj kunmetaĵoj konfuzas la facililon.  Ekzemple "idealo"
-  estas "facila" vorto laŭ la listo, sed la facililo konsideras ĝin
-  "tre facila" ĉar ĝi espektas kiel kunmetaĵo de du "tre facilaj"
-  vortoj: "ideo" kaj "al".
+<p><em>Facililo</em> nur kontrolas, ĉu eblas konstrui la enskribitajn
+vortojn per la permesataj radikoj. Ĝi foje akceptas sensencajn
+vortojn, kaj tute ne kontrolas la gramatikon.</p>
+
+<p>Se la radikoj troviĝas en la listo, <em>Facililo</em> signas
+malfacilajn kunmetaĵojn, ekz. “interligiteco”, kiel facilajn. La
+verkanto devas mem decidi, ĉu lernanto senprobleme komprenus tian
+vorton. Facila teksto prefere enhavu simplajn frazojn kaj ne uzu
+pezajn kunmetaĵojn. Tial estas preferinde anstataŭigi ĝin per la
+  esprimo “la ligoj inter...”</p>
 
 <h2>La fontokodo estas libera</h2>
 
@@ -134,11 +136,9 @@ de <a href="http://kontakto.tejo.org">Kontakto</a>.
 <label for="tekstujo">
 <span data-bind="if: redaktebla">Verku facilan tekston</span>
 <span data-bind="if: !redaktebla()">"Facila" teksto verkita</span>
- laŭ la
-<a href="http://kontakto.tejo.org/p/facila-kaj-tre-facila.html">reguloj</a>
-kaj
-<a href="http://remush.be/tezauro/Kontakto.html">vortolisto</a> de
-Kontakto.</label>
+laŭ la
+<a href="https://uea.facila.org/paroli/">vortolisto</a> de
+<a href="https://uea.facila.org/">uea.facila.org</a>.</label>
 
 <a role="button"
    data-bind="click: montruHelpon"
