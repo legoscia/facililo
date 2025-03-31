@@ -162,6 +162,7 @@ laŭ la
   <div id="regiloj" data-bind="if: $root.redaktebla">
   <label id="etikedoMaliksigu"><input type="checkbox" data-bind="checked: $root.maliksigu"> cx → ĉ</label>
   <button id="rekontrolu" type="button" data-bind="event: { click: $root.rekontrolu }">Rekontrolu</button>
+  <button id="forvisxu" type="button" onclick="malplenigasTekstujon()">Forviŝu</button>
   <button id="kopiu" type="button" data-clipboard-target="#montrujo">Kopiu</button>
   </div>
 
@@ -207,6 +208,13 @@ aŭ
 <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
 <script>
   new Clipboard('#kopiu');
+</script>
+
+<script>
+  function malplenigasTekstujon() {
+    let tekstujo = document.getElementById("tekstujo");
+    tekstujo.value = "";
+  }
 </script>
 
 <script src='facililo.js' charset='utf-8'></script>
