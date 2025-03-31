@@ -38,6 +38,21 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 <h1>Facililo</h1>
 
+<div id="ekstera">
+<p>
+<label for="tekstujo">
+<span data-bind="if: redaktebla">Verku facilan tekston</span>
+<span data-bind="if: !redaktebla()">"Facila" teksto verkita</span>
+laŭ la
+<a href="https://uea.facila.org/vortlisto/">vortolisto</a> de
+<a href="https://uea.facila.org/">uea.facila.org</a>.</label>
+
+<a role="button"
+   data-bind="click: montruHelpon"
+   href=""
+   id="helpobutono"
+   title="Pli da informoj">?</a>
+
 <div id="eksterhelpujo" data-bind="visible: montrasHelpon">
 <div id="helpujo">
 <span title="Fermu la informfenestron" data-bind="click: malmontruHelpon"
@@ -130,21 +145,6 @@ pezajn kunmetaĵojn. Tial estas preferinde anstataŭigi ĝin per la
 
 </div>
 </div>
-
-<div id="ekstera">
-<p>
-<label for="tekstujo">
-<span data-bind="if: redaktebla">Verku facilan tekston</span>
-<span data-bind="if: !redaktebla()">"Facila" teksto verkita</span>
-laŭ la
-<a href="https://uea.facila.org/vortlisto/">vortolisto</a> de
-<a href="https://uea.facila.org/">uea.facila.org</a>.</label>
-
-<a role="button"
-   data-bind="click: montruHelpon"
-   href=""
-   id="helpobutono"
-   title="Pli da informoj">?</a>
 
 <p data-bind="if: redaktebla">
 <textarea
