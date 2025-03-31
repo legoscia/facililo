@@ -47,16 +47,15 @@ laŭ la
 <a href="https://uea.facila.org/vortlisto/">vortolisto</a> de
 <a href="https://uea.facila.org/">uea.facila.org</a>.</label>
 
-<a role="button"
+<button
    data-bind="click: montruHelpon"
-   href=""
    id="helpobutono"
-   title="Pli da informoj">?</a>
+   title="Pli da informoj">?</button>
 
 <div id="eksterhelpujo" data-bind="visible: montrasHelpon">
 <div id="helpujo">
-<span title="Fermu la informfenestron" data-bind="click: malmontruHelpon"
-   class="fermilo" role="button">✗</span>
+<button title="Fermu la informfenestron" data-bind="click: malmontruHelpon"
+   class="fermilo">✗</button>
 <h2>Kio estas <em>Facililo</em>?</h2>
 
 <p>Per <em>Facililo</em> eblas kontroli, ĉu la enskribita teksto
@@ -175,8 +174,8 @@ pezajn kunmetaĵojn. Tial estas preferinde anstataŭigi ĝin per la
 
 <div data-bind="if: url">
 <div id="diskonigujo">
-<span title="Fermu la diskonigfenestreton" data-bind="click: nuliguURLn"
-   class="fermilo">✗</span>
+<button title="Fermu la diskonigfenestreton" data-bind="click: nuliguURLn"
+   class="fermilo">✗</button>
 <a data-bind="attr: { href: url }">Uzu tiun ĉi ligilon</a>
 aŭ kopiu la adreson:
 <input type="text" data-bind="value: url" id="urlujo">
