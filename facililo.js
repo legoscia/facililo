@@ -67,6 +67,11 @@ for (var i in sufiksojFacilaj) {
     arbo = enarbigu(arbo, sufiksojFacilaj[i], 1, 'facila');
 }
 
+enarbiguLaŭTipoj(arbo, landojKajPopoloj, 'landoj');
+for (var i in mondopartoj) {
+    arbo = enarbigu(arbo, mondopartoj[i], 1, 'landoj');
+}
+
 var FaciliĝuModelo = function(komencaTeksto, redaktebla) {
     var self = this;
 
