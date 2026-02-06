@@ -165,6 +165,9 @@ function kontrolu(teksto) {
         else if (nivelo == 'facila') {
             neTreFacilaj.push(vorto);
         }
+        else if (nivelo == 'landoj') {
+            landoj.push(vorto);
+        }
         else {
             malfacilaj.push(vorto);
         }
@@ -280,7 +283,7 @@ function kontroliVorton(vorto) {
 }
 
 function pliAltaNivelo(a, b) {
-    var niveloj = [ 'trefacila', 'facila', 'malfacila' ];
+    var niveloj = [ 'trefacila', 'facila', 'landoj', 'malfacila' ];
     if (niveloj.indexOf(a) > niveloj.indexOf(b))
 	return a;
     else
