@@ -29,6 +29,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 <script type='text/javascript' src='knockout-2.2.1.js'></script>
 <script type='text/javascript' src='trefacilaj.js' charset='utf-8'></script>
 <script type='text/javascript' src='facilaj.js' charset='utf-8'></script>
+<script type='text/javascript' src='landoj.js' charset='utf-8'></script>
 
 <link rel="stylesheet" href="facililo.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -156,6 +157,7 @@ pezajn kunmetaĵojn. Tial estas preferinde anstataŭigi ĝin per la
 <div data-bind="with: kontrolorezulto">
   <span class="trefacila">Tre facilaj: <span data-bind="text: treFacilaj"></span></span>
   <span class="facila">Facilaj: <span data-bind="text: facilaj.length"></span></span>
+  <span class="landoj">Landoj kaj popoloj: <span data-bind="text: landoj.length"></span></span>
   <span class="malfacila">Ne en la listo: <span data-bind="text: malfacilaj.length"></span></span>
 
   <div id="regiloj" data-bind="if: $root.redaktebla">

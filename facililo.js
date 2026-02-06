@@ -142,7 +142,7 @@ function kontrolu(teksto) {
     var vortoRe = /[A-ZĈĜĤĴŜŬa-zĉĝĥĵŝŭ]+/g;
     var rezulto;
 
-    var teksteroj = [], malfacilaj = [], neTreFacilaj = [], treFacilaj = 0;
+    var teksteroj = [], malfacilaj = [], landoj = [], neTreFacilaj = [], treFacilaj = 0;
     var ek = 0;
 
     while ((rezulto = vortoRe.exec(teksto)) !== null) {
@@ -171,9 +171,10 @@ function kontrolu(teksto) {
     console.log(teksteroj);
     return {
 	alineoj: alineigu(teksteroj),
-        vortoj: treFacilaj + neTreFacilaj.length + malfacilaj.length,
+        vortoj: treFacilaj + neTreFacilaj.length + landoj.length + malfacilaj.length,
         treFacilaj: treFacilaj,
         facilaj: neTreFacilaj,
+        landoj: landoj,
         malfacilaj: malfacilaj };
 }
 
