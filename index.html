@@ -157,17 +157,20 @@ pezajn kunmetaĵojn. Tial estas preferinde anstataŭigi ĝin per la
 </p>
 
 <div data-bind="with: kontrolorezulto">
-  <span class="trefacila">Tre facilaj: <span data-bind="text: treFacilaj"></span></span>
-  <span class="facila">Facilaj: <span data-bind="text: facilaj.length"></span></span>
-  <span class="landoj">Landoj kaj popoloj: <span data-bind="text: landoj.length"></span></span>
-  <span class="malfacila">Ne en la listo: <span data-bind="text: malfacilaj.length"></span></span>
 
   <div id="regiloj" data-bind="if: $root.redaktebla">
-  <label id="etikedoMaliksigu"><input type="checkbox" data-bind="checked: $root.maliksigu"> cx → ĉ</label>
   <button id="rekontrolu" type="button" data-bind="event: { click: $root.rekontrolu }">Rekontrolu</button>
   <button id="forvisxu" type="button" onclick="malplenigasTekstujon()">Forviŝu</button>
   <button id="kopiu" type="button" data-clipboard-target="#montrujo">Kopiu</button>
+  <label id="etikedoMaliksigu"><input type="checkbox" data-bind="checked: $root.maliksigu"> cx → ĉ</label>
   </div>
+
+  <p>
+    <span class="trefacila">Tre facilaj: <span data-bind="text: treFacilaj"></span></span>
+    <span class="facila">Facilaj: <span data-bind="text: facilaj.length"></span></span>
+    <span class="landoj">Landoj kaj popoloj: <span data-bind="text: landoj.length"></span></span>
+    <span class="malfacila">Ne en la listo: <span data-bind="text: malfacilaj.length"></span></span>
+  </p>
 
   <div id="montrujo" data-bind="visible: alineoj.length &gt; 0, foreach: alineoj"><p data-bind="foreach: $data"><span data-bind="
       text: tekstero, css: nivelo"></span></p></div>
