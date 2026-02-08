@@ -50,10 +50,6 @@ textarea {
     height: 30vh;
 }
 
-#regiloj {
-    float: right;
-}
-
 #montrujo {
     clear: right;
     border: solid 1px;
@@ -74,6 +70,7 @@ textarea {
 
 .trefacila { background-color: rgb(192, 255, 192); }
 .facila    { background-color: rgb(192, 220, 255); }
+.landoj    { background-color: rgb(254, 255, 192); }
 .malfacila { background-color: rgb(255, 192, 192); }
 
 #diskonigujo {

@@ -67,6 +67,11 @@ for (var i in sufiksojFacilaj) {
     arbo = enarbigu(arbo, sufiksojFacilaj[i], 1, 'facila');
 }
 
+enarbiguLaŭTipoj(arbo, landojKajPopoloj, 'landoj');
+for (var i in mondopartoj) {
+    arbo = enarbigu(arbo, mondopartoj[i], 1, 'landoj');
+}
+
 var FaciliĝuModelo = function(komencaTeksto, redaktebla) {
     var self = this;
 
@@ -142,7 +147,7 @@ function kontrolu(teksto) {
     var vortoRe = /[A-ZĈĜĤĴŜŬa-zĉĝĥĵŝŭ]+/g;
     var rezulto;
 
-    var teksteroj = [], malfacilaj = [], neTreFacilaj = [], treFacilaj = 0;
+    var teksteroj = [], malfacilaj = [], landoj = [], neTreFacilaj = [], treFacilaj = 0;
     var ek = 0;
 
     while ((rezulto = vortoRe.exec(teksto)) !== null) {
@@ -160,6 +165,9 @@ function kontrolu(teksto) {
         else if (nivelo == 'facila') {
             neTreFacilaj.push(vorto);
         }
+        else if (nivelo == 'landoj') {
+            landoj.push(vorto);
+        }
         else {
             malfacilaj.push(vorto);
         }
@@ -171,9 +179,10 @@ function kontrolu(teksto) {
     console.log(teksteroj);
     return {
 	alineoj: alineigu(teksteroj),
-        vortoj: treFacilaj + neTreFacilaj.length + malfacilaj.length,
+        vortoj: treFacilaj + neTreFacilaj.length + landoj.length + malfacilaj.length,
         treFacilaj: treFacilaj,
         facilaj: neTreFacilaj,
+        landoj: landoj,
         malfacilaj: malfacilaj };
 }
 
@@ -274,7 +283,7 @@ function kontroliVorton(vorto) {
 }
 
 function pliAltaNivelo(a, b) {
-    var niveloj = [ 'trefacila', 'facila', 'malfacila' ];
+    var niveloj = [ 'trefacila', 'facila', 'landoj', 'malfacila' ];
     if (niveloj.indexOf(a) > niveloj.indexOf(b))
 	return a;
     else
